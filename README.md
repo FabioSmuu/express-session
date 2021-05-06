@@ -31,7 +31,7 @@ Este projeto tem como o intuito, facilitar a criação de rotas e sessões para 
 - `metodo` : chama o tratamento da pathname para lhe dar com **query** e **body** *(get/post)*
 
 #### Base da pagina:
-> Veja os arquivos do diretorio [./src/paginas](./src/paginas) para melhor entendimento.
+> Veja os arquivos do diretorio [./src/paginas](/src/paginas) para melhor entendimento.
 ```js
 //Esta função é executada quando for chamado o methodo GET.
 const get = async (request, response) => {
@@ -41,9 +41,9 @@ const get = async (request, response) => {
 	//sess.chave verifica se existe uma sessão de nome "chave".
 	if (!sess.chave) return console.log('Sessão inexistente')
 
-	//Este objeto será passado para a pagina trocando ::exemplo:: por valores.exemplo
+	//Este objeto será passado para a pagina trocando ::valor:: por valores.valor
 	let valores = {
-		exemplo: xss(sess.chave) //atribui a sessão chave para o objeto.
+		valor: xss(sess.chave) //atribui a sessão chave para o objeto.
 	}
 
 	//Exibe o html para o cliente, trocando todos ::valores:: pelo objeto valores.
@@ -62,12 +62,21 @@ const post = async (request, response) => {
 	if (xss(request.body.exemplo)) sess.chave = xss(request.body.exemplo)
 
 	//Efetua o redirecionamento da pagina caso a sessão chave seja valida.
-	return (sess.chave) ? response.redirect('/dashboard') : response.send(html('index.html', valores))
+	return (sess.chave) ? response.redirect('/dashboard') : response.send(html('index.html', valores), {valor: 'String aleatoria.'})
 }
 
 module.exports = { get, post }
 ```
+#### HTML:
+> Use normalmente o direitorio [./src/www](/src/www) para criar sua aplicação.
+```html
+<form action="/" method="POST">
+	<input name="exemplo" placeholder="Este é um input de exemplo"/>
+	<button>Ok</button>
+</form>
 
+::valor::
+```
 
 #
 
