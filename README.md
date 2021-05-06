@@ -17,15 +17,47 @@ Este projeto tem como o intuito, facilitar a criação de rotas e sessões para 
 
 ## Configurações:
 #### Chave de segurança:
-- Crie uma chave de segurança para a sua sessão na [linha 9](/src/index.js#L9) da *index.js*
+- Crie uma chave de segurança para a sua sessão na [linha 9](/src/index.js#L9) da [*./src/index.js*](/src/index.js)
+
+#### Base da pagina:
+> Os arquivos das paginas se localisa em [./src/paginas](./src/paginas)
+```js
+//Esta função é executada quando for chamado o methodo GET.
+const get = async (request, response) => {
+	//Variavel de escopo penas para simplificar o codigo.
+	let sess = request.session
+
+	//sess.chave verifica se existe uma sessão de nome "chave".
+	if (!sess.chave) return console.log('Sessão inexistente')
+
+	//Este objeto será passado para a pagina trocando ::exemplo:: por valores.exemplo
+	let valores = {
+		exemplo: xss(sess.chave) //atribui a sessão chave para o objeto.
+	}
+
+	//Exibe o html para o cliente, trocando todos ::valores:: pelo objeto valores.
+	response.send(html('diretorio/arquivo.html', valores))
+}
+
+//Esta função é executada quando for chamado o methodo POST.
+const post = async (request, response) => {
+
+}
+
+module.exports = { get, post }
+```
+
 #### Criando uma rota:
-> As rotas devem ser criadas no arquivo [rotas.js](/src/rotas.js) como por exemplo, a [linha 10](/src/rotas.js#L10).
+> As rotas devem ser criadas no arquivo [./src/rotas.js](/src/rotas.js) como por exemplo, a [linha 10](/src/rotas.js#L10).
+> 
+> 
+
 - Use esta estrutura como escopo para suas rotas:
 ```js
   router.get(pagina, require(diretorio).metodo)
 ```
 - `pagina` : se refere ao pathname da url. *(//link:8000/pathname)*
-- `diretorio` : aponta para o arquivo.js referente a esta rota. *(./diretorio/arquivo.js)*
+- `diretorio` : aponta para o arquivo.js de sua base referente a esta rota. *(./paginas/arquivo.js)*
 - `metodo` : chama o tratamento da pathname para lhe dar com **query** e **body** *(get/post)*
 
 #
