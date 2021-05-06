@@ -41,7 +41,17 @@ const get = async (request, response) => {
 
 //Esta função é executada quando for chamado o methodo POST.
 const post = async (request, response) => {
+	//Variavel de escopo penas para simplificar o codigo.
+	let sess = request.session
 
+	//Esta comparação barra a insersõ de sessão se o valor do input exemplo do html for diferente de 'Smuu'.
+	if (xss(request.body.exemplo) !== 'Smuu') return response.send(html('index.html'))
+
+	//Caso exista um valor no input exemplo do html, será inserido a sessão chave.
+	if (xss(request.body.exemplo)) sess.chave = xss(request.body.exemplo)
+
+	//Efetua o redirecionamento da pagina caso a sessão chave seja valida.
+	return (sess.chave) ? response.redirect('/dashboard') : response.send(html('index.html', valores))
 }
 
 module.exports = { get, post }
