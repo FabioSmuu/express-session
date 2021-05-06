@@ -15,9 +15,19 @@ Este projeto tem como o intuito, facilitar a criação de rotas e sessões para 
 | xss | 1.0.9
 #
 
-### Configurações:
-- Configure seu banco de dados mysql no arquivo [config.php](/config.php).
-- Em [query.php](/query.php) se entronca as funções usadas para exibição de valores.
+## Configurações:
+#### Chave de segurança:
+- Crie uma chave de segurança para a sua sessão na [linha 9](/src/index.js#L9) da *index.js*
+#### Criando uma rota:
+> As rotas devem ser criadas no arquivo [rotas.js](/src/rotas.js) como por exemplo, a [linha 10](/src/rotas.js#L10).
+- Use esta estrutura como escopo para suas rotas:
+```js
+  router.get(pagina, require(diretorio).metodo)
+```
+- `pagina` : se refere ao pathname da url. *(//link:8000/pathname)*
+- `diretorio` : aponta para o arquivo.js referente a esta rota. *(./diretorio/arquivo.js)*
+- `metodo` : chama o tratamento da pathname para lhe dar com **query** e **body** *(get/post)*
+
 #
 
 **Obrigado pela sua atenção!**
