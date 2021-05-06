@@ -18,6 +18,8 @@ const post = async (request, response) => {
 	//let sess = request.session
 	//sess.email = xss(request.body.email)
 	//response.redirect('/')
+	//res.setHeader('Content-Type', 'application/json')
+	//res.end(JSON.stringify({}))
 }
 
 module.exports = { get, post }
