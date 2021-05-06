@@ -1,6 +1,6 @@
 const fs = require('fs')
 , path = require('path')
-, host = __dirname + '/www/'
+, host = path.resolve(__dirname, 'www/')
 
 module.exports = {
 	html,
