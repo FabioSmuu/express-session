@@ -10,7 +10,7 @@ router.get('/', require('./paginas/index.js').get)
 router.get('/dashboard', require('./paginas/dashboard.js').get)
 router.get('/sair', require('./paginas/sair.js').get)
 
-router.get('/exemplo/:valor', (request, response) => {
+router.get('/teste/:valor', (request, response) => {
 	let valor = xss(request.params.valor)
 	
 	console.log('Pagina:', valor)
