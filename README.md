@@ -16,11 +16,8 @@ Este projeto tem como o intuito, facilitar a criação de rotas e sessões para 
 #
 
 ## Configurações:
-#### Chave de segurança:
-- Crie uma chave de segurança para a sua sessão na [linha 9](/src/index.js#L9) da [*./src/index.js*](/src/index.js)
+> Crie uma chave de segurança para a sua sessão na [linha 9](/src/index.js#L9) da [*./src/index.js*](/src/index.js)
 
-
-#### Criando uma rota:
 > As rotas devem ser criadas no arquivo [./src/rotas.js](/src/rotas.js) como por exemplo, a [linha 10](/src/rotas.js#L10).
 > 
 > 
@@ -34,7 +31,7 @@ Este projeto tem como o intuito, facilitar a criação de rotas e sessões para 
 - `metodo` : chama o tratamento da pathname para lhe dar com **query** e **body** *(get/post)*
 
 #### Base da pagina:
-> Os arquivos das paginas se localisa em [./src/paginas](./src/paginas)
+> Veja os arquivos do diretorio [./src/paginas](./src/paginas) para melhor entendimento.
 ```js
 //Esta função é executada quando for chamado o methodo GET.
 const get = async (request, response) => {
