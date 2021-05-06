@@ -1,0 +1,17 @@
+{
+  "name": "simplesExpressSession",
+  "version": "1.0.0",
+  "description": "Apenas um simples projeto usndo express-session.",
+  "main": "src/index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "xss": "^1.0.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FabioSmuu",
+  "license": "ISC"
+}
