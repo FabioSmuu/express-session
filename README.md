@@ -19,6 +19,20 @@ Este projeto tem como o intuito, facilitar a criação de rotas e sessões para 
 #### Chave de segurança:
 - Crie uma chave de segurança para a sua sessão na [linha 9](/src/index.js#L9) da [*./src/index.js*](/src/index.js)
 
+
+#### Criando uma rota:
+> As rotas devem ser criadas no arquivo [./src/rotas.js](/src/rotas.js) como por exemplo, a [linha 10](/src/rotas.js#L10).
+> 
+> 
+
+- Use esta estrutura como escopo para suas rotas:
+```js
+  router.get(pagina, require(diretorio).metodo)
+```
+- `pagina` : se refere ao pathname da url. *(//link:8000/pathname)*
+- `diretorio` : aponta para o arquivo.js de sua base referente a esta rota. *(./paginas/arquivo.js)*
+- `metodo` : chama o tratamento da pathname para lhe dar com **query** e **body** *(get/post)*
+
 #### Base da pagina:
 > Os arquivos das paginas se localisa em [./src/paginas](./src/paginas)
 ```js
@@ -57,18 +71,6 @@ const post = async (request, response) => {
 module.exports = { get, post }
 ```
 
-#### Criando uma rota:
-> As rotas devem ser criadas no arquivo [./src/rotas.js](/src/rotas.js) como por exemplo, a [linha 10](/src/rotas.js#L10).
-> 
-> 
-
-- Use esta estrutura como escopo para suas rotas:
-```js
-  router.get(pagina, require(diretorio).metodo)
-```
-- `pagina` : se refere ao pathname da url. *(//link:8000/pathname)*
-- `diretorio` : aponta para o arquivo.js de sua base referente a esta rota. *(./paginas/arquivo.js)*
-- `metodo` : chama o tratamento da pathname para lhe dar com **query** e **body** *(get/post)*
 
 #
 
