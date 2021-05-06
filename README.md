@@ -3,12 +3,12 @@
 [![N|Solid](https://cdn.discordapp.com/attachments/631607183301148672/724397007170568313/paypal.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fabinhoec2210@gmail.com&item_name=F%C3%A1bio&currency_code=BRL)  [![N|Solid](https://cdn.discordapp.com/attachments/631607183301148672/724397005543178270/picpay.png)](https://app.picpay.com/user/smuu)
 
 
-Este projeto tem como o intuito, facilitar a criação de rotas e sessões para propositos simples e diretos.
+Este projeto tem como o intuito, facilitar a criação de rotas e sessões para propósitos simples e diretos.
 
-> Tentei deixar o mais simples e cru possivel para o entendimento de iniciantes na area.
+> Tentei deixar o mais simples e cru possível para o entendimento de iniciantes na área.
 
 
-| Dependencia | Versão|
+| Dependência | Versão|
 | - | - |
 | express | 4.17.1
 | express-session | 1.17.1
@@ -18,7 +18,7 @@ Este projeto tem como o intuito, facilitar a criação de rotas e sessões para 
 ## Configurações:
 > Crie uma chave de segurança para a sua sessão na [linha 9](/src/index.js#L9) da [*./src/index.js*](/src/index.js)
 
-> As rotas devem ser criadas no arquivo [./src/rotas.js](/src/rotas.js) como por exemplo, a [linha 10](/src/rotas.js#L10).
+> As rotas devem ser criadas no arquivo [./src/rotas.js](/src/rotas.js) como, por exemplo, a [linha 10](/src/rotas.js#L10).
 > 
 > 
 
@@ -31,11 +31,11 @@ Este projeto tem como o intuito, facilitar a criação de rotas e sessões para 
 - `metodo` : chama o tratamento da pathname para lhe dar com **query** e **body** *(get/post)*
 
 #### Base da pagina:
-> Veja os arquivos do diretorio [./src/paginas](/src/paginas) para melhor entendimento.
+> Veja os arquivos do diretório [./src/paginas](/src/paginas) para melhor entendimento.
 ```js
-//Esta função é executada quando for chamado o methodo GET.
+//Esta função é executada quando for chamado o método GET.
 const get = async (request, response) => {
-	//Variavel de escopo penas para simplificar o codigo.
+	//Variável de escopo penas para simplificar o código.
 	let sess = request.session
 
 	//sess.chave verifica se existe uma sessão de nome "chave".
@@ -46,16 +46,16 @@ const get = async (request, response) => {
 		valor: xss(sess.chave) //atribui a sessão chave para o objeto.
 	}
 
-	//Exibe o html para o cliente, trocando todos ::valores:: pelo objeto valores.
+	//Exibe o html para o cliente, trocando todos ::valores:: pelo objeto "valores".
 	response.send(html('diretorio/arquivo.html', valores))
 }
 
-//Esta função é executada quando for chamado o methodo POST.
+//Esta função é executada quando for chamado o método POST.
 const post = async (request, response) => {
-	//Variavel de escopo penas para simplificar o codigo.
+	//Variável de escopo penas para simplificar o código.
 	let sess = request.session
 
-	//Esta comparação barra a insersõ de sessão se o valor do input exemplo do html for diferente de 'Smuu'.
+	//Esta comparação barra a inserção de sessão se o valor do input exemplo do html for diferente de 'Smuu'.
 	if (xss(request.body.exemplo) !== 'Smuu') return response.send(html('index.html'))
 
 	//Caso exista um valor no input exemplo do html, será inserido a sessão chave.
