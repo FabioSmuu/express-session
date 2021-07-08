@@ -11,7 +11,7 @@ router.get('/dashboard', require('./paginas/dashboard.js').get)
 router.get('/sair', require('./paginas/sair.js').get)
 
 router.get('/teste/:valor', (request, response) => {
-	let valor = xss(request.params.valor)
+	const valor = xss(request.params.valor)
 	
 	console.log('Pagina:', valor)
 	console.log('GET', request.query) //?nome=Fabio&Exemplo=exemplo&chave=valor
