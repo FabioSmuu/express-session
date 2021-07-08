@@ -36,13 +36,13 @@ Este projeto tem como o intuito, facilitar a criação de rotas e sessões para 
 //Esta função é executada quando for chamado o método GET.
 const get = async (request, response) => {
 	//Variável de escopo penas para simplificar o código.
-	let sess = request.session
+	const sess = request.session
 
 	//sess.chave verifica se existe uma sessão de nome "chave".
 	if (!sess.chave) return console.log('Sessão inexistente')
 
 	//Este objeto será passado para a pagina trocando ::valor:: por valores.valor
-	let valores = {
+	const valores = {
 		valor: xss(sess.chave) //atribui a sessão chave para o objeto.
 	}
 
@@ -53,7 +53,7 @@ const get = async (request, response) => {
 //Esta função é executada quando for chamado o método POST.
 const post = async (request, response) => {
 	//Variável de escopo penas para simplificar o código.
-	let sess = request.session
+	const sess = request.session
 
 	//Esta comparação barra a inserção de sessão se o valor do input exemplo do html for diferente de 'Smuu'.
 	if (xss(request.body.exemplo) !== 'Smuu') return response.send(html('index.html'))
