@@ -8,11 +8,8 @@ module.exports = {
 }
 
 function html(arquivo, valor = {}) {
-	let data = fs.existsSync(path.resolve(host, arquivo)) ? fs.readFileSync(path.resolve(host, arquivo)) : fs.readFileSync(path.resolve(host, '404.html'))
+	const data = fs.existsSync(path.resolve(host, arquivo)) ? fs.readFileSync(path.resolve(host, arquivo)) : fs.readFileSync(path.resolve(host, '404.html'))
+	const retorno = Object.keys(valor).map(chave => valor[chave] ? data.toString().replace(new RegExp(`::${chave}::`, 'g'), valor[chave]) : data)
 
-	if (valor != {}) Object.keys(valor).map(chave => {
-		if (valor[chave]) data = data.toString().replace(new RegExp(`::${chave}::`, 'g'), valor[chave])
-	})
-
-	return data.toString()
+	return retorno.toString()
 }
