@@ -1,5 +1,5 @@
 const get = async (request, response) => {
-	let sess = request.session
+	const sess = request.session
 	
     sess.destroy(err => {
         if(err) return console.log(err)
