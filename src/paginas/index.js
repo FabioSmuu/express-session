@@ -1,8 +1,8 @@
 const { html, xss } = require('../extra.js')
 
 const get = async (request, response) => {
-	let sess = request.session
-	let valores = {
+	const sess = request.session
+	const valores = {
 		log: ' '
 	}
 
@@ -11,8 +11,8 @@ const get = async (request, response) => {
 }
 
 const post = async (request, response) => {
-	let sess = request.session
-	let valores = {
+	const sess = request.session
+	const valores = {
 		log: ' '
 	}
 
