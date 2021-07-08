@@ -2,12 +2,12 @@ const { html, xss } = require('../extra.js')
 
 
 const get = async (request, response) => {
-	let sess = request.session
+	const sess = request.session
 
 	//sess.nome deve ser tratada pra evitar que injetem uma "request.session.nome".
 	if (!sess.nome) return response.redirect('/')
 
-	let valores = {
+	const valores = {
 		nome: xss(sess.nome)
 	}
 
@@ -15,11 +15,13 @@ const get = async (request, response) => {
 }
 
 const post = async (request, response) => {
-	//let sess = request.session
-	//sess.email = xss(request.body.email)
-	//response.redirect('/')
-	//res.setHeader('Content-Type', 'application/json')
-	//res.end(JSON.stringify({}))
+/*
+	const sess = request.session
+	sess.email = xss(request.body.email)
+	response.redirect('/')
+	res.setHeader('Content-Type', 'application/json')
+	res.end(JSON.stringify({}))
+*/
 }
 
 module.exports = { get, post }
